@@ -92,10 +92,10 @@ const Resume = () => {
   className="rounded-xl group"
 >
  <a
-      href="/resume/Sparsh_Kashyap_Resume.pdf"
+      href="/resume/Resume_sparsh.pdf"
       target="_blank"
       rel="noopener noreferrer"
-      download="Sparsh_Kashyap_Resume.pdf"
+      download="Resume_sparsh.pdf"
   >
   <Download size={18} className="mr-2 group-hover:animate-bounce" />
     Download Resume
