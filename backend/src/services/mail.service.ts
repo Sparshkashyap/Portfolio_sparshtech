@@ -1,10 +1,9 @@
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 
-const EMAIL_USER = 'sparshkashyap655@gmail.com';
-const EMAIL_PASS = 'evtbluiandvbrjch';
-const ADMIN_EMAIL = 'sparshkashyap655@gmail.com';
+dotenv.config();
 
-
+const { EMAIL_USER, EMAIL_PASS, ADMIN_EMAIL } = process.env;
 
 if (!EMAIL_USER || !EMAIL_PASS || !ADMIN_EMAIL) {
   throw new Error("Missing EMAIL_USER, EMAIL_PASS or ADMIN_EMAIL in .env");
