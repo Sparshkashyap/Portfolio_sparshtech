@@ -1,26 +1,63 @@
 import { Request, Response } from "express";
 import { Query } from "../models/query";
-import { sendWhatsApp } from "../services/whatsapp";
+import { sendMail } from "../services/mail.service";
 
-export const submitQueryForm = async (req: Request, res: Response) => {
+interface QueryBody {
+  name: string;
+  email: string;
+  queryType: string;
+  message: string;
+}
+
+export const submitQueryForm = async (
+  req: Request<{}, {}, QueryBody>,
+  res: Response
+) => {
   try {
     const { name, email, queryType, message } = req.body;
 
-    if (!name || !email || !queryType ||!message) {
-      return res.status(400).json({ message: "All fields required" });
+    // 1. Validate input
+    if (!name || !email || !queryType || !message) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
     }
 
-    const contact_query = await Query.create({ name, email, queryType,message });
-     // 2️⃣ Send WhatsApp notification
-  await sendWhatsApp(name, email, queryType,message);
+    // 2. Save query (source of truth)
+    const savedQuery = await Query.create({
+      name: name.trim(),
+      email: email.trim(),
+      queryType: queryType.trim(),
+      message: message.trim(),
+    });
 
+    // 3. Fire-and-forget email (non-blocking)
+    sendMail(
+      `New Query | ${queryType}`,
+      `
+        <h3>New User Query</h3>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Query Type:</b> ${queryType}</p>
+        <p><b>Message:</b> ${message}</p>
+      `,
+      email
+    ).catch((err) => {
+      console.error("Email failed but query saved:", err);
+    });
 
-    res.status(201).json({
+    // 4. Respond immediately
+    return res.status(201).json({
       success: true,
-      message: "Message sent successfully",
-      data: contact_query
+      message: "Query submitted successfully",
+      data: savedQuery,
     });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    console.error("Query submit error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
   }
 };

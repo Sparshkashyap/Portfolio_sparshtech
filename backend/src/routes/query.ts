@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { submitQueryForm } from "../controllers/query.js";
+import { submitQueryForm } from "../controllers/query";
 
 const router = Router();
 
