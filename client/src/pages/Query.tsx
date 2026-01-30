@@ -97,7 +97,7 @@ const Query = () => {
 
 
   try {
-    const response = await fetch("https://portfolio-sparshtech-3.onrender.com/api/query", {
+    const response = await fetch("https://portfolio-sparshtech-1.onrender.com/api/query", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

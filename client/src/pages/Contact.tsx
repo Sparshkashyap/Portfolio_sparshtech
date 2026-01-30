@@ -82,7 +82,7 @@ const Contact = () => {
   setIsSubmitting(true);
 
   try {
-    const response = await fetch("https://portfolio-sparshtech-3.onrender.com/api/contact", {
+    const response = await fetch("https://portfolio-sparshtech-1.onrender.com/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"},
