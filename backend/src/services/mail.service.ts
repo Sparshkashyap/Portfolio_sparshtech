@@ -3,45 +3,39 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const EMAIL_USER = process.env.EMAIL_USER;
-const EMAIL_PASS = process.env.EMAIL_PASS;
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const EMAIL_USER = process.env.EMAIL_USER;        // your gmail
+const EMAIL_PASS = process.env.EMAIL_PASS;        // Gmail App Password
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;      // where mail is received
 
 if (!EMAIL_USER || !EMAIL_PASS || !ADMIN_EMAIL) {
-  console.error("❌ Email env vars missing", {
-    EMAIL_USER: !!EMAIL_USER,
-    EMAIL_PASS: !!EMAIL_PASS,
-    ADMIN_EMAIL: !!ADMIN_EMAIL,
-  });
+  throw new Error("❌ Email env vars missing");
 }
 
-// Create transporter ONCE
+// ✅ Create transporter ONCE (IMPORTANT)
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,               // 🔥 must be 465 on Render
+  secure: true,            // 🔥 must be true
   auth: {
     user: EMAIL_USER,
-    pass: EMAIL_PASS, // MUST be App Password
+    pass: EMAIL_PASS,      // 🔐 App Password only
   },
+  connectionTimeout: 30000,
+  socketTimeout: 30000,
 });
 
-// 🔍 verify SMTP connection at runtime
-transporter.verify((err, success) => {
-  if (err) {
-    console.error("❌ SMTP verify failed:", err);
-  } else {
-    console.log("✅ SMTP server ready");
-  }
-});
+// ❗ Optional: verify ONLY in dev, not prod
+if (process.env.NODE_ENV !== "production") {
+  transporter.verify()
+    .then(() => console.log("✅ SMTP ready"))
+    .catch(err => console.error("❌ SMTP verify failed:", err));
+}
 
 export const sendMail = async (
   subject: string,
   html: string,
   replyTo?: string
 ): Promise<void> => {
-  if (!EMAIL_USER || !EMAIL_PASS || !ADMIN_EMAIL) {
-    throw new Error("Email service not configured");
-  }
-
   try {
     await transporter.sendMail({
       from: `"Portfolio Contact" <${EMAIL_USER}>`,
