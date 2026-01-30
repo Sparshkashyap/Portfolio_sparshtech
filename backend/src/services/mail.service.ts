@@ -4,15 +4,15 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: 'sparshkashyap655@gmail.com',
+    pass: 'evtbluiandvbrjch',
   },
 });
 
 export const sendMail = async (subject: string, text: string, to?: string) => {
   await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: to ?? process.env.ADMIN_EMAIL,
+    from:'sparshkashyap655@gmail.com',
+    to: to ?? 'sparshkashyap655@gmail.com',
     subject,
     text,
   });
