@@ -14,8 +14,8 @@ if (!EMAIL_USER || !EMAIL_PASS || !ADMIN_EMAIL) {
 // ✅ Create transporter ONCE (IMPORTANT)
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,               // 🔥 must be 465 on Render
-  secure: true,            // 🔥 must be true
+  port: 587,               // 🔥 must be 465 on Render
+  secure: false,            // 🔥 must be true
   auth: {
     user: EMAIL_USER,
     pass: EMAIL_PASS,      // 🔐 App Password only
