@@ -14,9 +14,11 @@ export const submitQueryForm = async (
   res: Response
 ) => {
   try {
+    console.log("QUERY API HIT");
+
     const { name, email, queryType, message } = req.body;
 
-    // 1. Validate input
+    // 1️⃣ Validate input
     if (!name || !email || !queryType || !message) {
       return res.status(400).json({
         success: false,
@@ -24,17 +26,17 @@ export const submitQueryForm = async (
       });
     }
 
-    // 2. Save query (source of truth)
-    const savedQuery = await Query.create({
+    // 2️⃣ Save to DB (source of truth)
+    const query = await Query.create({
       name: name.trim(),
       email: email.trim(),
       queryType: queryType.trim(),
       message: message.trim(),
     });
 
-    // 3. Fire-and-forget email (non-blocking)
+    // 3️⃣ Send email (non-blocking, fire-and-forget)
     sendMail(
-      `New Query | ${queryType}`,
+      `Portfolio_Sparsh | ${name} `,
       `
         <h3>New User Query</h3>
         <p><b>Name:</b> ${name}</p>
@@ -47,14 +49,14 @@ export const submitQueryForm = async (
       console.error("Email failed but query saved:", err);
     });
 
-    // 4. Respond immediately
+    // 4️⃣ Respond immediately
     return res.status(201).json({
       success: true,
       message: "Query submitted successfully",
-      data: savedQuery,
+      data: query,
     });
   } catch (error) {
-    console.error("Query submit error:", error);
+    console.error("Query submission error:", error);
     return res.status(500).json({
       success: false,
       message: "Internal server error",

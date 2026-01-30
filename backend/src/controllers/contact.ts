@@ -14,9 +14,10 @@ export const submitContactForm = async (
   res: Response
 ) => {
   try {
+    console.log("CONTACT API HIT");
+
     const { name, email, subject, message } = req.body;
 
-    // 1. Validate input
     if (!name || !email || !subject || !message) {
       return res.status(400).json({
         success: false,
@@ -24,7 +25,7 @@ export const submitContactForm = async (
       });
     }
 
-    // 2. Save to DB first (source of truth)
+    // 1️⃣ Save to DB
     const contact = await Contact.create({
       name: name.trim(),
       email: email.trim(),
@@ -32,9 +33,9 @@ export const submitContactForm = async (
       message: message.trim(),
     });
 
-    // 3. Send email (do NOT block response on failure)
+    // 2️⃣ Send email (non-blocking)
     sendMail(
-      "New Contact Form Submission",
+      `Portfolio_Sparsh | ${name}`,
       `
         <h3>New Contact Message</h3>
         <p><b>Name:</b> ${name}</p>
@@ -47,7 +48,7 @@ export const submitContactForm = async (
       console.error("Email failed but DB saved:", err);
     });
 
-    // 4. Respond immediately
+    // 3️⃣ Respond immediately
     return res.status(201).json({
       success: true,
       message: "Message received successfully",
