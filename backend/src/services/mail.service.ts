@@ -19,7 +19,8 @@ export const sendMail = async (
   try {
     await resend.emails.send({
       to: process.env.ADMIN_EMAIL!,
-      from: "Query <query@sparshtech.me>",
+      // After domain expiry:     from: "Acme <onboarding@resend.dev>",
+      from: "Portfolio <query@sparshtech.me>",
       subject,
       html
     })
