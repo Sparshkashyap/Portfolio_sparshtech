@@ -43,8 +43,7 @@ export const submitQueryForm = async (
         <p><b>Email:</b> ${email}</p>
         <p><b>Query Type:</b> ${queryType}</p>
         <p><b>Message:</b> ${message}</p>
-      `,
-      email
+      `
     ).catch((err) => {
       console.error("Email failed but query saved:", err);
     });

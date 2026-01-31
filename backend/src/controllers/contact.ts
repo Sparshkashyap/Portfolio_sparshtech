@@ -42,8 +42,7 @@ export const submitContactForm = async (
         <p><b>Email:</b> ${email}</p>
         <p><b>Subject:</b> ${subject}</p>
         <p><b>Message:</b> ${message}</p>
-      `,
-      email
+      `
     ).catch((err) => {
       console.error("Email failed but DB saved:", err);
     });
