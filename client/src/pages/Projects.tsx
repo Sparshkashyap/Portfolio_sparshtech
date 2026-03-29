@@ -19,7 +19,7 @@ const projects: Project[] = [
     featured: true,
   },
     {
-  id: '8',
+  id: '2',
   title: 'Coursify – AI Powered LMS SaaS Platform',
   description:
     'Coursify is a full-stack AI-powered learning management SaaS platform where students can enroll in courses, instructors can create and sell courses, and admins manage the platform, payments, refunds, wallets, and analytics.',
