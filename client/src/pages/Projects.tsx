@@ -18,17 +18,24 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/Sparshkashyap/',
     featured: true,
   },
-  {
-    id: '2',
-    title: 'AI Content Generator',
-    description:
-      'An AI-powered content generation tool with tone control, multi-language support, and SEO optimization.',
-    image: '/images/AI.jpg',
-    techStack: ['Next.js', 'OpenAI', 'TypeScript', 'Tailwind'],
-    liveUrl: 'https://github.com/Sparshkashyap/',
-    githubUrl: 'https://github.com/Sparshkashyap/',
-    featured: true,
-  },
+    {
+  id: '8',
+  title: 'Coursify – AI Powered LMS SaaS Platform',
+  description:
+    'Coursify is a full-stack AI-powered learning management SaaS platform where students can enroll in courses, instructors can create and sell courses, and admins manage the platform, payments, refunds, wallets, and analytics.',
+  image: '/images/coursify.png',
+  techStack: [
+    'React',
+    'TypeScript',
+    'Tailwind CSS',
+    'Brevo',
+    'Cloudinary',
+    'AI Integration'
+  ],
+  liveUrl: 'https://coursify-new.vercel.app/',
+  githubUrl: 'https://github.com/Sparshkashyap/',
+  featured: true,
+},
   {
     id: '3',
     title: 'Task Management App',
@@ -80,6 +87,17 @@ const projects: Project[] = [
       'Analytics dashboard for social media managers.',
     image: '/images/social.jpeg',
     techStack: ['React', 'GraphQL', 'D3.js'],
+    liveUrl: 'https://github.com/Sparshkashyap/',
+    githubUrl: 'https://github.com/Sparshkashyap/',
+    featured: true,
+  },
+    {
+    id: '8',
+    title: 'AI Content Generator',
+    description:
+      'An AI-powered content generation tool with tone control, multi-language support, and SEO optimization.',
+    image: '/images/AI.jpg',
+    techStack: ['Next.js', 'OpenAI', 'TypeScript', 'Tailwind'],
     liveUrl: 'https://github.com/Sparshkashyap/',
     githubUrl: 'https://github.com/Sparshkashyap/',
     featured: true,
