@@ -25,8 +25,8 @@ const projects: Project[] = [
       'A full-stack LeetCode-style SaaS platform with 22+ REST API modules — problems, contests, leaderboard, and AI-powered features. Built with async code execution via BullMQ + Redis, multi-provider auth (JWT + OAuth), Razorpay billing, and Google Gemini AI integration.',
     image: '/images/algoforge.jpg',
     techStack: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'BullMQ', 'Socket.IO', 'Gemini AI', 'Razorpay'],
-    liveUrl: 'https://github.com/Sparshkashyap/',
-    githubUrl: 'https://github.com/Sparshkashyap/',
+    liveUrl: 'https://algo-forge-phi.vercel.app/',
+    githubUrl: 'https://github.com/Sparshkashyap/AlgoForge',
     featured: true,
   },
   {
