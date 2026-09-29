@@ -48,7 +48,28 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: '4',
+  id: '4',
+  title: 'Photo App – Cloud Media Management Platform',
+  description:
+    'A full-stack serverless media management platform built with React and AWS, supporting secure photo, video, and audio uploads through Amazon S3. Includes JWT + Google authentication, DynamoDB metadata management, folder organization, favorites, trash recovery, media sharing, and secure presigned URLs.',
+  image: '/images/ph.jpeg',
+  techStack: [
+    'React',
+    'Node.js',
+    'Express.js',
+    'AWS Lambda',
+    'API Gateway',
+    'Amazon S3',
+    'DynamoDB',
+    'JWT',
+    'Google Auth'
+  ],
+  liveUrl: 'https://main.ddvgp5hdlanze.amplifyapp.com/',
+  githubUrl: 'https://github.com/Sparshkashyap/photo-app',
+  featured: true,
+},
+  {
+    id: '5',
     title: 'Task Management App',
     description:
       'A collaborative task manager with real-time updates and team workspaces.',
@@ -59,7 +80,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: '5',
+    id: '6',
     title: 'Health & Fitness Tracker',
     description:
       'Health tracking app with workout plans and progress analytics.',
@@ -70,7 +91,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: '6',
+    id: '7',
     title: 'Blogiffy – Multi-User Blogging Platform',
     description:
       'Full-stack blogging app with authentication, authorization, likes, and comments.',
@@ -81,7 +102,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: '7',
+    id: '8',
     title: 'Real Estate Platform',
     description:
       'Property listing platform with AI-based recommendations.',
@@ -92,7 +113,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: '8',
+    id: '9',
     title: 'Social Media Dashboard',
     description: 'Analytics dashboard for social media managers.',
     image: '/images/social.jpeg',
@@ -102,7 +123,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: '9',
+    id: '10',
     title: 'AI Content Generator',
     description:
       'An AI-powered content generation tool with tone control, multi-language support, and SEO optimization.',
